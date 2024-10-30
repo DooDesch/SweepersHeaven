@@ -7,9 +7,6 @@ thunderstore/*.zip
 thunderstore/*.tar.gz
 thunderstore/*.rar
 
-# Dependency folders
-lib/
-
 # Logs and crash reports
 *.log
 
