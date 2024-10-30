@@ -1,0 +1,23 @@
+# Compiled files
+bin/
+obj/
+
+# Thunderstore & build-related artifacts
+thunderstore/*.zip
+thunderstore/*.tar.gz
+thunderstore/*.rar
+
+# Dependency folders
+lib/
+
+# Logs and crash reports
+*.log
+
+# IDE and system files
+.vscode/
+.idea/
+*.DS_Store
+*.vs/
+
+# Backup files
+*.bak

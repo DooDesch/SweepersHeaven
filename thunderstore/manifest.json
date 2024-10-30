@@ -1,0 +1,13 @@
+{
+    "name": "SweepersHeaven",
+    "version_number": "1.0.0",
+    "description": "A plugin for mass item collection with configurable settings and a debug mode.",
+    "website_url": "https://github.com/DooDesch/SweepersHeaven",
+    "dependencies": [
+      "BepInEx-BepInExPack-5.4.19"
+    ],
+    "contributors": [
+      "DooDesch"
+    ]
+  }
+  

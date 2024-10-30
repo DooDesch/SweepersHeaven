@@ -1,0 +1,68 @@
+name: Build and Release on Tag
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version-check.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: "3.1.x" # or compatible with netstandard2.1
+
+      - name: Verify version in csproj matches the tag
+        id: version-check
+        run: |
+          TAG_VERSION="${GITHUB_REF#refs/tags/v}"
+          CS_VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" SweepersHeaven.csproj)
+          if [ "$TAG_VERSION" != "$CS_VERSION" ]; then
+            echo "Version mismatch: Tag version is $TAG_VERSION, but csproj version is $CS_VERSION"
+            exit 1
+          fi
+          echo "::set-output name=version::$TAG_VERSION"
+
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      - name: Prepare release directory
+        run: |
+          mkdir -p release
+          cp bin/Release/netstandard2.1/SweepersHeaven.dll release/
+          cp thunderstore/* release/
+          cp README.md release/
+          cp CHANGELOG.md release/
+          cp LICENSE.md release/
+
+      - name: Create release ZIP
+        run: zip -j "SweepersHeaven_${{ steps.version-check.outputs.version }}.zip" release/*
+
+      - name: Upload Release ZIP
+        uses: actions/upload-artifact@v2
+        with:
+          name: SweepersHeaven
+          path: "SweepersHeaven_${{ steps.version-check.outputs.version }}.zip"
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built ZIP
+        uses: actions/download-artifact@v2
+        with:
+          name: SweepersHeaven
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "SweepersHeaven_${{ needs.build.outputs.version }}.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
