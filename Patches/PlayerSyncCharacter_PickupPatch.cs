@@ -16,28 +16,38 @@ class PlayerSyncCharacter_PickupPatch
     {
         if (!__instance.isLocalPlayer || !canPickup) return;
 
+        int equippedItem = __instance.pNetwork.equippedItem;
+        if (equippedItem != broomItemIndex) return;
+
         if (Input.GetKeyDown(Plugin.Instance.PickupKey))
         {
-            int equippedItem = __instance.pNetwork.equippedItem;
-            if (equippedItem != broomItemIndex) return;
+            List<GameObject> itemsInRange = ItemsInRange(__instance.transform);
+            if (itemsInRange.Count == 0) return;
 
             __instance.pNetwork.CmdPlayAnimation(broomHitAnimationIndex);
-
-            List<GameObject> itemsInRange = FindItemsNearby(__instance.transform, Plugin.Instance.PickupRadius);
             __instance.StartCoroutine(PickupItemsCoroutine(__instance, itemsInRange));
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            List<GameObject> itemsInRange = ItemsInRange(__instance.transform);
+            if (itemsInRange.Count == 0) return;
+
+            __instance.pNetwork.CmdPlayAnimation(broomHitAnimationIndex);
+            ThrowItems(itemsInRange, __instance);
+        }
+    }
+
+    private static List<GameObject> ItemsInRange(Transform playerTransform)
+    {
+        return FindItemsNearby(playerTransform, Plugin.Instance.PickupRadius);
     }
 
     private static IEnumerator PickupItemsCoroutine(PlayerSyncCharacter instance, List<GameObject> itemsInRange)
     {
         int itemsPicked = 0;
-        instance.StartCoroutine(PickupDelayCoroutine(instance));
 
-        foreach (var item in itemsInRange)
-        {
-            if (!Plugin.Instance.ThrowItemsOnPickup) break;
-            ApplyForceToItem(item, instance.transform);
-        }
+        ThrowItems(itemsInRange, instance);
 
         foreach (var item in itemsInRange)
         {
@@ -50,6 +60,17 @@ class PlayerSyncCharacter_PickupPatch
         }
 
         Debug.Log($"Picked up {itemsPicked} items with the broom!");
+    }
+
+    private static void ThrowItems(List<GameObject> items, PlayerSyncCharacter instance)
+    {
+        instance.StartCoroutine(PickupDelayCoroutine(instance));
+
+        foreach (var item in items)
+        {
+            if (!Plugin.Instance.ThrowItemsOnPickup) break;
+            ApplyForceToItem(item, instance.transform);
+        }
     }
 
     private static void ApplyForceToItem(GameObject item, Transform playerTransform)

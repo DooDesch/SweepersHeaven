@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.0 - Rightclick throw items
+
+- Added rightclick to throw items around withouth picking them up
+
 ## v1.0.1 - Update Readme
 
 ## v1.0.0 - Initial Release
