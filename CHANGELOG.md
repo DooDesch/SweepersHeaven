@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0 - Mini Transporter product pickup
+
+- Added support for picking up items using the Mini Transporter
+
 ## v1.1.0 - Rightclick throw items
 
 - Added rightclick to throw items around withouth picking them up

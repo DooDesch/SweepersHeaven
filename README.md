@@ -8,6 +8,7 @@
 - **Customizable Collection Radius**: Adjust how wide the sweep is for collected items.
 - **Dynamic Visuals**: Collected items are swept aside with added visual impact.
 - **Debug Mode**: Special debug options to test product spawning and sweeping functionality.
+- **Mini Transporter Pickup**: Collect items using the Mini Transporter.
 
 ## Installation
 
@@ -23,6 +24,7 @@ After installation, you can configure **SweepersHeaven** using the BepInEx confi
 - **Max Items per Sweep**: Set a limit on the number of items picked up in one go.
 - **Pickup Key**: Assign a custom key to activate the broom for sweeping.
 - **Debug Mode**: Toggle debug mode for spawning extra items and testing.
+- **Mini Transporter Pickup**: Enable or disable the ability to pick up items with the Mini Transporter.
 
 ## Development
 

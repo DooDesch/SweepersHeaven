@@ -73,15 +73,20 @@ class PlayerSyncCharacter_PickupPatch
         }
     }
 
-    private static void ApplyForceToItem(GameObject item, Transform playerTransform)
+    public static void ApplyForceToItem(GameObject item, Transform playerTransform, Vector3 direction = default)
     {
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb == null) return;
 
         float randomForce = Random.Range(2f, 10f);
 
-        Vector3 leftForce = (Vector3.up + -playerTransform.right).normalized * randomForce;
-        rb.AddForce(leftForce, ForceMode.Impulse);
+        Vector3 force = (Vector3.up + direction).normalized * randomForce;
+        if (direction == default)
+        {
+            force = (Vector3.up + -playerTransform.right).normalized * randomForce;
+        }
+
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
     private static IEnumerator PickupDelayCoroutine(PlayerSyncCharacter instance)

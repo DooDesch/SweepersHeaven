@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <GameLibsOutputDirectory>E:\Mods\SupermarketTogether\MyMods\HighlightBoxPlaces\lib</GameLibsOutputDirectory>
+        <GameLibsOutputDirectory>E:\Mods\SupermarketTogether\MyMods\SweepersHeaven\lib</GameLibsOutputDirectory>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Assembly-CSharp-firstpass">

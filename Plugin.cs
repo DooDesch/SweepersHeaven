@@ -22,6 +22,7 @@ public class Plugin : BaseUnityPlugin
     private ConfigEntry<KeyCode> pickupKey;
     private ConfigEntry<KeyCode> spawnKey;
     private ConfigEntry<bool> isDebugMode;
+    private ConfigEntry<bool> miniTransporterAutoPickup;
 
     internal static GameObject StolenProductPrefab;
 
@@ -36,6 +37,7 @@ public class Plugin : BaseUnityPlugin
         pickupKey = Config.Bind("Controls", "Pickup Key", KeyCode.Mouse0, "Key to activate broom sweeping. Default is Left Mouse Button.");
         spawnKey = Config.Bind("Debug", "Spawn Key", KeyCode.G, "Key to spawn items around player. Only works in Debug Mode.");
         isDebugMode = Config.Bind("Debug", "Enable Debug Mode", false, "If true, enables debug actions. Use Spawn Key to spawn items.");
+        miniTransporterAutoPickup = Config.Bind("Mini Transporter", "Auto Pickup", true, "If true, enables auto pickup for Mini Transporter.");
 
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
@@ -51,6 +53,7 @@ public class Plugin : BaseUnityPlugin
     public KeyCode PickupKey => pickupKey.Value;
     public KeyCode SpawnKey => spawnKey.Value;
     public bool IsDebugMode => isDebugMode.Value;
+    public bool MiniTransporterAutoPickup => miniTransporterAutoPickup.Value;
 
     private void OnDestroy()
     {
