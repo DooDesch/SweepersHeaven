@@ -33,7 +33,7 @@ jobs:
       # Klone das private Abhängigkeits-Repository
       - name: Clone dependencies repository
         run: |
-          git clone https://$DEPENDENCIES_TOKEN@github.com/YourUsername/SweepersHeaven-Dependencies.git dependencies
+          git clone https://$DEPENDENCIES_TOKEN@github.com/DooDesch/SupermarketTogetherLib.git dependencies
         env:
           DEPENDENCIES_TOKEN: ${{ secrets.DEPENDENCIES_TOKEN }}
 
