@@ -1,6 +1,6 @@
 # SweepersHeaven Plugin
 
-**SweepersHeaven** is a quality-of-life plugin for **Supermarket Together** designed to make product collection easier and faster! When thieves enter the store and drop a large number of items, chasing after every single one can be exhausting. With **SweepersHeaven**, players can use their broom to collect multiple products at once, saving time and hassle.
+**SweepersHeaven** is a quality-of-life plugin for **Supermarket Together** designed to make product collection easier and faster! When thieves leave the store, get beaten and drop a large number of items, chasing after every single one can be exhausting. With **SweepersHeaven**, players can use their broom to collect multiple products at once, saving time and hassle.
 
 ## Features
 
