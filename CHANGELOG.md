@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.0.1 - Update Readme
+
 ## v1.0.0 - Initial Release
 
 ### Features

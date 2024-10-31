@@ -1,41 +1,40 @@
 # SweepersHeaven Plugin
 
-**SweepersHeaven** is a plugin for **Supermarket Together** that allows players to collect items in the supermarket more efficiently when using a broom. Perfect for players who want a tidier gameplay experience!
+**SweepersHeaven** is a quality-of-life plugin for **Supermarket Together** designed to make product collection easier and faster! When thieves enter the store and drop a large number of items, chasing after every single one can be exhausting. With **SweepersHeaven**, players can use their broom to collect multiple products at once, saving time and hassle.
 
 ## Features
 
-- **Mass Collection**: Collect multiple items at once with a single click.
-- **Adjustable Collection Radius**: Define the range for collected items.
-- **Physical Effects**: Items fly aside when collected.
-- **Debug Mode**: Includes special debugging options for testing.
+- **Bulk Collection**: Pick up several dropped items with a single sweep.
+- **Customizable Collection Radius**: Adjust how wide the sweep is for collected items.
+- **Dynamic Visuals**: Collected items are swept aside with added visual impact.
+- **Debug Mode**: Special debug options to test product spawning and sweeping functionality.
 
 ## Installation
 
-1. Download the `.zip` package from [Thunderstore](https://thunderstore.io/) or from the releases page.
-2. Extract the files into the `BepInEx/plugins` folder of your **Supermarket Together** installation.
-3. Start the game!
+1. Download the latest `.zip` package from [Thunderstore](https://thunderstore.io/) or from the releases page.
+2. Extract the contents to the `BepInEx/plugins` folder in your **Supermarket Together** installation directory.
+3. Launch the game and start sweeping!
 
 ## Configuration
 
-Options can be adjusted in the BepInEx configuration folder:
+After installation, you can configure **SweepersHeaven** using the BepInEx configuration file:
 
-- **Pickup Radius**: Set the collection radius.
-- **Max Items to Pick**: Set the max items per action, that will be picked up.
-- **Pickup Key**: Configure the key for broom activation.
-- **Debug Mode**: Enable debug mode to spawn 100 products from your shelfs on the ground.
+- **Pickup Radius**: Controls how wide an area items are collected from.
+- **Max Items per Sweep**: Set a limit on the number of items picked up in one go.
+- **Pickup Key**: Assign a custom key to activate the broom for sweeping.
+- **Debug Mode**: Toggle debug mode for spawning extra items and testing.
 
 ## Development
 
-To contribute to the plugin:
+To contribute:
 
-1. Clone the repository.
-2. Use `dotnet build` to compile the project.
-3. Copy the compiled `.dll` file in `bin/Debug/netstandard2.1` to the `BepInEx/plugins` folder for testing.
+1. Clone the repository and build the project with `dotnet build`.
+2. Place the compiled `.dll` file from `bin/Debug/netstandard2.1` in your `BepInEx/plugins` folder to test.
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for more details.
+Licensed under the MIT License. See the `LICENSE` file for details.
 
-## Contact
+## Questions & Feedback
 
-For questions or suggestions, reach out via GitHub Issues.
+For questions, suggestions, or feedback, please open an issue on GitHub.
