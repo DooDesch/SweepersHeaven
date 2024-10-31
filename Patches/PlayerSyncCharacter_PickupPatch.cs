@@ -21,7 +21,7 @@ class PlayerSyncCharacter_PickupPatch
 
         if (Input.GetKeyDown(Plugin.Instance.PickupKey))
         {
-            List<GameObject> itemsInRange = ItemsInRange(__instance.transform);
+            List<GameObject> itemsInRange = ItemsInRange();
             if (itemsInRange.Count == 0) return;
 
             __instance.pNetwork.CmdPlayAnimation(broomHitAnimationIndex);
@@ -30,7 +30,7 @@ class PlayerSyncCharacter_PickupPatch
 
         if (Input.GetMouseButtonDown(1))
         {
-            List<GameObject> itemsInRange = ItemsInRange(__instance.transform);
+            List<GameObject> itemsInRange = ItemsInRange();
             if (itemsInRange.Count == 0) return;
 
             __instance.pNetwork.CmdPlayAnimation(broomHitAnimationIndex);
@@ -38,24 +38,44 @@ class PlayerSyncCharacter_PickupPatch
         }
     }
 
-    private static List<GameObject> ItemsInRange(Transform playerTransform)
+    private static List<GameObject> ItemsInRange()
     {
-        return FindItemsNearby(playerTransform, Plugin.Instance.PickupRadius);
+        List<GameObject> itemsInRange = new List<GameObject>();
+
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 5f))
+        {
+            GameObject lookedAt = hit.collider.gameObject;
+
+            if (lookedAt.CompareTag("Interactable") && lookedAt.GetComponent<StolenProductSpawn>() != null)
+            {
+                itemsInRange = FindItemsNearby(lookedAt.transform, Plugin.Instance.PickupRadius);
+            }
+        }
+
+        return itemsInRange;
     }
 
     private static IEnumerator PickupItemsCoroutine(PlayerSyncCharacter instance, List<GameObject> itemsInRange)
     {
         int itemsPicked = 0;
 
+        instance.StartCoroutine(PickupDelayCoroutine(instance));
         ThrowItems(itemsInRange, instance);
 
         foreach (var item in itemsInRange)
         {
             if (itemsPicked >= Plugin.Instance.MaxItemsToPick) break;
-            ApplyForceToItem(item, instance.transform);
+
+            if (item == null) continue;
+
+            var itemComponent = item.GetComponent<StolenProductSpawn>();
+            if (itemComponent == null) continue;
 
             yield return new WaitForSeconds(1f / Mathf.Min(Plugin.Instance.MaxItemsToPick, itemsInRange.Count));
-            item.GetComponent<StolenProductSpawn>().CmdRecoverStolenProduct();
+            itemComponent.CmdRecoverStolenProduct();
             itemsPicked++;
         }
 
@@ -64,8 +84,6 @@ class PlayerSyncCharacter_PickupPatch
 
     private static void ThrowItems(List<GameObject> items, PlayerSyncCharacter instance)
     {
-        instance.StartCoroutine(PickupDelayCoroutine(instance));
-
         foreach (var item in items)
         {
             if (!Plugin.Instance.ThrowItemsOnPickup) break;
