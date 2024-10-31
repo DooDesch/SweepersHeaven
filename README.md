@@ -11,7 +11,7 @@
 
 ## Installation
 
-1. Download the latest `.zip` package from [Thunderstore](https://thunderstore.io/) or from the releases page.
+1. Download the latest `.zip` package from [Thunderstore](https://thunderstore.io/c/supermarket-together/p/DooDesch/SweepersHeaven/) or from the releases page.
 2. Extract the contents to the `BepInEx/plugins` folder in your **Supermarket Together** installation directory.
 3. Launch the game and start sweeping!
 
