@@ -30,6 +30,19 @@ jobs:
           fi
           echo "::set-output name=version::$TAG_VERSION"
 
+      # Klone das private Abhängigkeits-Repository
+      - name: Clone dependencies repository
+        run: |
+          git clone https://$DEPENDENCIES_TOKEN@github.com/YourUsername/SweepersHeaven-Dependencies.git dependencies
+        env:
+          DEPENDENCIES_TOKEN: ${{ secrets.DEPENDENCIES_TOKEN }}
+
+      # Kopiere die Dependencies aus dem Root-Verzeichnis des geklonten Repositories in den lib-Ordner
+      - name: Copy dependencies to lib folder
+        run: |
+          mkdir -p lib
+          cp -R dependencies/* lib/
+
       - name: Build the project
         run: dotnet build --configuration Release
 
