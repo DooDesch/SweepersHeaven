@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.2.1 - Fix collecting products when hitting thiefs
+
 ## v1.2.0 - Mini Transporter product pickup
 
 - Added support for picking up items using the Mini Transporter
