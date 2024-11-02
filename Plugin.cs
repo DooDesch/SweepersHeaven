@@ -23,6 +23,7 @@ public class Plugin : BaseUnityPlugin
     private ConfigEntry<KeyCode> spawnKey;
     private ConfigEntry<bool> isDebugMode;
     private ConfigEntry<bool> miniTransporterAutoPickup;
+    private ConfigEntry<bool> pickUpAllTrashAtOnce;
 
     internal static GameObject StolenProductPrefab;
 
@@ -38,6 +39,7 @@ public class Plugin : BaseUnityPlugin
         spawnKey = Config.Bind("Debug", "Spawn Key", KeyCode.G, "Key to spawn items around player. Only works in Debug Mode.");
         isDebugMode = Config.Bind("Debug", "Enable Debug Mode", false, "If true, enables debug actions. Use Spawn Key to spawn items.");
         miniTransporterAutoPickup = Config.Bind("Mini Transporter", "Auto Pickup", true, "If true, enables auto pickup for Mini Transporter.");
+        pickUpAllTrashAtOnce = Config.Bind("Trash", "Pick Up All Trash At Once", false, "If true, enables picking up all trash in the store at once.");
 
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
@@ -54,6 +56,7 @@ public class Plugin : BaseUnityPlugin
     public KeyCode SpawnKey => spawnKey.Value;
     public bool IsDebugMode => isDebugMode.Value;
     public bool MiniTransporterAutoPickup => miniTransporterAutoPickup.Value;
+    public bool PickUpAllTrashAtOnce => pickUpAllTrashAtOnce.Value;
 
     private void OnDestroy()
     {

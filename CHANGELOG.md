@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.0 - Pickup all trash at once Feature
+
+- Added feature to pickup all trash at once, it's disabled by default, you can enable it in the config file
+
 ## v1.2.1 - Fix collecting products when hitting thiefs
 
 ## v1.2.0 - Mini Transporter product pickup
