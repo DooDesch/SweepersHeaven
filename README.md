@@ -9,6 +9,7 @@
 - **Dynamic Visuals**: Collected items are swept aside with added visual impact.
 - **Debug Mode**: Special debug options to test product spawning and sweeping functionality.
 - **Mini Transporter Pickup**: Collect items using the Mini Transporter.
+- **Pickup all trash at once**: Picks up all trash in the store at once, disabled by default.
 
 ## Installation
 
@@ -20,11 +21,14 @@
 
 After installation, you can configure **SweepersHeaven** using the BepInEx configuration file:
 
-- **Pickup Radius**: Controls how wide an area items are collected from.
-- **Max Items per Sweep**: Set a limit on the number of items picked up in one go.
-- **Pickup Key**: Assign a custom key to activate the broom for sweeping.
-- **Debug Mode**: Toggle debug mode for spawning extra items and testing.
-- **Mini Transporter Pickup**: Enable or disable the ability to pick up items with the Mini Transporter.
+- **PickupRadius**: Controls how wide an area items are collected from.
+- **MaxItemsToPick**: Set a limit on the number of items picked up in one go.
+- **ThrowItemsOnPickup**: Enable or disable throwing items when picked up.
+- **PickupKey**: Assign a custom key to activate the broom for sweeping.
+- **IsDebugMode**: Toggle debug mode for spawning extra items and testing.
+- **SpawnKey**: Assign a custom key to spawn items for testing.
+- **MiniTransporterAutoPickup**: Enable or disable the ability to pick up items with the Mini Transporter.
+- **PickUpAllTrashAtOnce**: Enable or disable the ability to pick up all trash in the store at once.
 
 ## Development
 
