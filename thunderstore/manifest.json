@@ -1,6 +1,6 @@
 {
     "name": "SweepersHeaven",
-    "version_number": "1.3.0",
+    "version_number": "1.3.1",
     "description": "A plugin for mass item collection with configurable settings and a debug mode.",
     "website_url": "https://github.com/DooDesch/SweepersHeaven",
     "dependencies": [

@@ -28,9 +28,9 @@ public class TrashSpawn_Patch
     {
         if (!Plugin.Instance.PickUpAllTrashAtOnce) return;
 
-        if (trashes.Count == 0) return;
-
         if (trashes.Contains(__instance)) trashes.Remove(__instance);
+
+        if (trashes.Count == 0) return;
 
         TrashSpawn trashToRemove = trashes.First();
         Plugin.Logger.LogInfo($"Removing trash: {trashToRemove.trashID} -- Trash count: {trashes.Count}");

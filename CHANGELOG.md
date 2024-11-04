@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.3.1 - Fix error when picking up a single item in the store
+
 ## v1.3.0 - Pickup all trash at once Feature
 
 - Added feature to pickup all trash at once, it's disabled by default, you can enable it in the config file
